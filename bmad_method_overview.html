@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm hiểu nhanh: BMAD METHOD</title>
+    <title>Hướng dẫn BMAD - VNPT Mobile Team</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,15 +15,14 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        gray: {
-                            850: '#1f2937',
-                            900: '#111827',
-                            950: '#030712',
+                        vnpt: {
+                            blue: '#0066FF',
+                            light: '#3385FF',
+                            dark: '#0047B3'
                         },
                         bmad: {
-                            light: '#60a5fa', // blue-400
-                            DEFAULT: '#3b82f6', // blue-500
-                            dark: '#8b5cf6', // violet-500
+                            DEFAULT: '#8b5cf6', // purple-500
+                            dark: '#6d28d9',
                         }
                     }
                 }
@@ -33,11 +32,11 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030712; /* gray-950 */
-            color: #f3f4f6; /* gray-100 */
+            background-color: #030712; 
+            color: #f3f4f6;
         }
         .text-gradient {
-            background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #3385FF 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -48,36 +47,68 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .hover-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(96, 165, 250, 0.5);
-            box-shadow: 0 10px 30px -10px rgba(96, 165, 250, 0.2);
+        .code-block-wrapper {
+            position: relative;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
         }
-        .transition-all {
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 300ms;
+        .code-block-header {
+            background: #1f2937;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #374151;
+        }
+        .code-block-content {
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.875rem;
+            color: #a78bfa; /* purple tint for commands */
+        }
+        .copy-btn {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .copy-btn:hover { color: #fff; }
+        
+        /* Custom Table & Form styling */
+        .rubric-table th, .rubric-table td {
+            border: 1px solid #374151;
+            padding: 0.75rem;
+            text-align: center;
+        }
+        .rubric-table th:first-child, .rubric-table td:first-child {
+            text-align: left;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: #3385FF;
+            width: 1.2rem;
+            height: 1.2rem;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-bmad-DEFAULT selection:text-white">
+<body class="antialiased selection:bg-vnpt-blue selection:text-white">
 
     <!-- Header/Nav -->
     <nav class="fixed w-full z-50 glass-panel border-b-0 border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <i class="fa-solid fa-layer-group text-bmad-light text-xl"></i>
-                    <span class="font-bold text-xl tracking-tight">BMAD<span class="text-gray-400 font-normal">Method</span></span>
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-8 h-8 bg-vnpt-blue rounded-md flex items-center justify-center font-bold text-white">V</div>
+                    <span class="font-bold text-xl tracking-tight border-l border-gray-600 pl-3">Mobile Team <span class="text-gray-400 font-normal text-sm ml-2">Q2/2026</span></span>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-bmad-light transition-colors px-3 py-2 rounded-md text-sm font-medium">Là gì?</a>
-                        <a href="#why" class="hover:text-bmad-light transition-colors px-3 py-2 rounded-md text-sm font-medium">Tại sao chọn BMAD?</a>
-                        <a href="#workflow" class="hover:text-bmad-light transition-colors px-3 py-2 rounded-md text-sm font-medium">Quy trình</a>
-                        <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" class="bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2">
-                            <i class="fa-brands fa-github"></i> GitHub
-                        </a>
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#overview" class="hover:text-vnpt-light transition-colors px-3 py-2 rounded-md text-sm font-medium">1. Giới thiệu</a>
+                        <a href="#practice" class="hover:text-vnpt-light transition-colors px-3 py-2 rounded-md text-sm font-medium">2. Thực hành</a>
+                        <a href="#evaluation" class="bg-vnpt-blue hover:bg-vnpt-light text-white px-4 py-2 rounded-md text-sm font-medium transition-all">3. Đánh giá</a>
                     </div>
                 </div>
             </div>
@@ -85,269 +116,381 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background glows -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden -z-10 pointer-events-none">
-            <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-bmad-DEFAULT opacity-20 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-bmad-dark opacity-20 rounded-full blur-[100px]"></div>
-        </div>
+    <section class="relative pt-32 pb-16 overflow-hidden">
+        <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-vnpt-blue opacity-20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-bmad-DEFAULT opacity-20 rounded-full blur-[120px] pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-300 text-sm font-medium mb-8">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                V6 Alpha Is Live
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-300 text-sm font-medium mb-6">
+                <i class="fa-solid fa-mobile-screen-button"></i> Dành riêng cho Dự án Flutter (SmartCA, Invoice...)
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
-                Chấm dứt kỷ nguyên <span class="text-gray-500 line-through">Vibe Coding</span>.<br>
-                Chào mừng <span class="text-gradient">Agile AI</span>.
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+                Hướng Dẫn Áp Dụng <span class="text-gradient">BMAD v6.2.0</span>
             </h1>
             
-            <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-400 mb-10">
-                <strong class="text-gray-200">BMAD (Breakthrough Method for Agile AI-Driven Development)</strong> là framework mã nguồn mở giúp biến AI từ một trợ lý chat lộn xộn thành một nhóm phát triển phần mềm có tổ chức, chuyên nghiệp và đáng tin cậy.
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400 mb-8">
+                Tích hợp <strong>OpenCode</strong> & <strong>OH-MY-OPENCODE (OMO)</strong>. Biến AI từ một công cụ chat ngẫu hứng thành một dây chuyền sản xuất phần mềm có kỷ luật, nhất quán và hiệu quả.
             </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#install" class="bg-bmad-DEFAULT hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg shadow-blue-500/20">
-                    Bắt đầu ngay <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-                <a href="https://docs.bmad-method.org/" target="_blank" class="glass-panel hover:bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all border border-gray-700">
-                    Đọc Tài liệu Docs
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- The Problem vs Solution Section -->
-    <section id="why" class="py-20 bg-gray-900">
+    <!-- PHẦN 1: TỔNG QUAN -->
+    <section id="overview" class="py-16 bg-gray-900/50 border-y border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Tại sao bạn cần BMAD Method?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Hầu hết các lập trình viên đang dùng AI để "viết đại" mã nguồn (Vibe Coding) mà không có kế hoạch. BMAD mang lại cấu trúc và định hướng.</p>
+            <div class="mb-12 border-l-4 border-vnpt-blue pl-4">
+                <h2 class="text-3xl font-bold text-white">Phần 1: Tổng quan BMAD & Định vị</h2>
+                <p class="text-gray-400 mt-2">Hệ thống > Prompt đơn lẻ | Artifacts > Giao tiếp miệng | Iteration > Generation.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Vibe Coding (The Problem) -->
-                <div class="glass-panel p-8 rounded-2xl border border-red-900/30 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">
-                            <i class="fa-solid fa-xmark text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-200">Cách cũ: "Vibe Coding"</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex gap-3"><i class="fa-solid fa-message mt-1 text-gray-500"></i> Prompt: <em>"Hãy tạo cho tôi một ứng dụng Todo..."</em></li>
-                        <li class="flex gap-3"><i class="fa-solid fa-brain mt-1 text-gray-500"></i> AI tự đoán mò yêu cầu và kiến trúc hệ thống.</li>
-                        <li class="flex gap-3"><i class="fa-solid fa-memory mt-1 text-gray-500"></i> <strong>Lỗi Context Window:</strong> Hôm sau mở lại, AI quên mất ngữ cảnh codebase.</li>
-                        <li class="flex gap-3"><i class="fa-solid fa-bug mt-1 text-gray-500"></i> Sửa chỗ này hỏng chỗ kia. Thiếu tài liệu nhất quán.</li>
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-panel p-8 rounded-2xl border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-circle-xmark text-red-400 mr-2"></i>Quy trình hiện tại</h3>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li><strong>BA/PM:</strong> Viết ticket Jira trực tiếp, mô tả không có cấu trúc cố định.</li>
+                        <li><strong>Tech Lead:</strong> Phác thảo kiến trúc trong đầu/whiteboard, ít document. Tự break task chất lượng không đều.</li>
+                        <li><strong>Dev:</strong> Đọc ticket Jira → tự hỏi Copilot theo ý cá nhân → Code → Push.</li>
+                        <li><strong>Review:</strong> Làm thủ công, phụ thuộc vào thời gian và cảm tính của người review.</li>
                     </ul>
                 </div>
-
-                <!-- BMAD Method (The Solution) -->
-                <div class="glass-panel p-8 rounded-2xl border border-blue-500/30 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-bmad-DEFAULT"></div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
-                            <i class="fa-solid fa-check text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Cách mới: <span class="text-bmad-light">BMAD Method</span></h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex gap-3"><i class="fa-solid fa-file-signature mt-1 text-bmad-DEFAULT"></i> Tạo tài liệu mô tả (PRD) và Kiến trúc rõ ràng TRƯỚC KHI code.</li>
-                        <li class="flex gap-3"><i class="fa-solid fa-users mt-1 text-bmad-DEFAULT"></i> AI đóng vai trò như các chuyên gia (PM, Architect, Developer).</li>
-                        <li class="flex gap-3"><i class="fa-solid fa-database mt-1 text-bmad-DEFAULT"></i> <strong>Lưu trữ Context:</strong> Mọi thứ được lưu thành tệp Markdown (.md) làm "bộ nhớ" vĩnh viễn cho AI.</li>
-                        <li class="flex gap-3"><i class="fa-solid fa-shield-halved mt-1 text-bmad-DEFAULT"></i> Code theo từng chức năng nhỏ (User Stories), dễ test và dễ debug.</li>
+                <div class="glass-panel p-8 rounded-2xl border border-vnpt-blue/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-vnpt-blue/10 rounded-bl-full -z-10"></div>
+                    <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-circle-check text-green-400 mr-2"></i>Sau khi áp dụng BMAD Bundle</h3>
+                    <ul class="space-y-4 text-gray-300 text-sm">
+                        <li><strong>BA/PM Agent:</strong> BA viết Brief thô (1-2 trang) → PM Agent sinh ra <code>PRD.md</code> chuẩn hóa.</li>
+                        <li><strong>Architect Agent:</strong> Sinh ra <code>architecture.md</code> (có LikeC4 as Code). Dùng SM Agent để tạo <code>story-*.md</code> có Acceptance Criteria rõ ràng.</li>
+                        <li><strong>Dev:</strong> Chạy <code>/vnpt-dev-story-loop</code> → AI tự load skill Flutter, đọc kiến trúc và triển khai code.</li>
+                        <li><strong>Review Agent:</strong> Chạy <code>/vnpt-review-loop</code> song song, lặp tự động đến khi 0 actionable issue.</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Core Features -->
-    <section id="about" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Các Trụ Cột Của Hệ Thống</h2>
-            </div>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Feature 1 -->
-                <div class="glass-panel p-6 rounded-xl hover-card transition-all">
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-4 text-2xl">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Agent As Code</h3>
-                    <p class="text-gray-400 text-sm">Các AI Agent (như Mary - Business Analyst, hay Murat - Test Architect) được định nghĩa hoàn toàn bằng các tệp Markdown (.md) độc lập, chứa cấu hình YAML. Dễ dàng chia sẻ và quản lý version.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="glass-panel p-6 rounded-xl hover-card transition-all">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 mb-4 text-2xl">
-                        <i class="fa-solid fa-arrows-to-circle"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Thích Ứng Mọi Quy Mô</h3>
-                    <p class="text-gray-400 text-sm">Framework hỗ trợ 3 luồng công việc: "Quick Flow" cho việc fix bug nhỏ, "Standard" cho ứng dụng MVP, và các quy trình phức tạp cho hệ thống Enterprise.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="glass-panel p-6 rounded-xl hover-card transition-all">
-                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 mb-4 text-2xl">
-                        <i class="fa-solid fa-plug"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Tích hợp IDE</h3>
-                    <p class="text-gray-400 text-sm">Hoạt động trơn tru với các công cụ AI bạn đang dùng như Claude Code, Cursor, GitHub Copilot. Lệnh gọi `/bmad-help` giúp bạn tìm câu trả lời ngay trong IDE.</p>
-                </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 text-sm text-blue-200">
+                <i class="fa-solid fa-circle-info mr-2"></i> <strong>Lưu ý về Công cụ:</strong> VNPT đang sử dụng <strong>MiniMax-M2.7</strong> làm model mặc định. BMAD chạy qua OpenCode CLI. GitHub Copilot trong VS Code chỉ đóng vai trò thứ yếu (secondary).
             </div>
         </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section id="workflow" class="py-20 bg-gray-900 border-y border-gray-800">
+    <!-- PHẦN 2: THỰC HÀNH TỪNG BƯỚC -->
+    <section id="practice" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Quy Trình 4 Giai Đoạn (4-Phase Flow)</h2>
-                <p class="text-gray-400">Cách BMAD chia nhỏ dự án lớn để AI không bị "ngợp".</p>
+            <div class="mb-12 border-l-4 border-bmad-DEFAULT pl-4">
+                <h2 class="text-3xl font-bold text-white">Phần 2: Cài đặt & Thực hành Step-by-Step</h2>
+                <p class="text-gray-400 mt-2">Dành cho việc setup ban đầu và luồng công việc hàng ngày của Dev/Lead.</p>
             </div>
 
-            <div class="relative">
-                <!-- Connecting line -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-800 -translate-y-1/2 z-0"></div>
-                
-                <div class="grid md:grid-cols-4 gap-6 relative z-10">
+            <!-- Bước 1: Cài đặt -->
+            <div class="mb-10">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-sm border border-gray-600">1</span> 
+                    Cài đặt môi trường & Bundle VNPT
+                </h3>
+                <div class="glass-panel p-6 rounded-xl border border-gray-700">
+                    <p class="text-sm text-gray-400 mb-4">Yêu cầu hệ thống: Node.js (20+), Python (3.8+), Git.</p>
                     
-                    <!-- Phase 1 -->
-                    <div class="glass-panel p-6 rounded-xl border border-gray-700 text-center relative group hover:border-bmad-light transition-all">
-                        <div class="w-16 h-16 mx-auto bg-gray-800 border-2 border-bmad-DEFAULT rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-[0_0_15px_rgba(59,130,246,0.5)]">1</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Analysis <br><span class="text-sm font-normal text-gray-400">(Phân tích)</span></h4>
-                        <p class="text-sm text-gray-400">Agent <span class="text-bmad-light">Product Owner</span> viết tài liệu yêu cầu sản phẩm (PRD), định nghĩa vấn đề và ràng buộc.</p>
+                    <div class="code-block-wrapper">
+                        <div class="code-block-header">
+                            <span>Terminal - Cài đặt OpenCode</span>
+                            <button onclick="copyCode('code-1')" class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <div class="code-block-content" id="code-1">
+npm install -g opencode-ai
+opencode --version</div>
                     </div>
 
-                    <!-- Phase 2 -->
-                    <div class="glass-panel p-6 rounded-xl border border-gray-700 text-center relative group hover:border-bmad-light transition-all">
-                        <div class="w-16 h-16 mx-auto bg-gray-800 border-2 border-bmad-DEFAULT rounded-full flex items-center justify-center text-xl font-bold mb-4">2</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Planning <br><span class="text-sm font-normal text-gray-400">(Lập kế hoạch)</span></h4>
-                        <p class="text-sm text-gray-400">Agent <span class="text-bmad-light">Scrum Master</span> chia nhỏ PRD thành các User Stories với tiêu chí nghiệm thu rõ ràng.</p>
+                    <div class="code-block-wrapper">
+                        <div class="code-block-header">
+                            <span>Terminal - Clone Bundle & Cài đặt vào Project</span>
+                            <button onclick="copyCode('code-2')" class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <div class="code-block-content" id="code-2">
+# 1. Clone Bundle nội bộ VNPT
+git clone &lt;VNPT-INTERNAL-GIT&gt;/vnpt-bmad-custom
+cd vnpt-bmad-custom
+
+# 2. Chạy installer trỏ vào project Flutter của bạn (Thay đường dẫn)
+python install_vnpt_bmad_custom_all.py --repo /duong/dan/toi/du-an-flutter --skip-serena --skip-gitnexus</div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500"></i> Lệnh này sẽ cài đặt BMAD v6.2.0, nạp OMO, copy custom skills (ui-ux-pro-max, springboot-patterns) và tạo folder <code>_bmad/</code> trong project của bạn.</p>
+                </div>
+            </div>
+
+            <!-- Bước 2: Workflow -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-sm border border-gray-600">2</span> 
+                    Các Lệnh Workflow Hàng Ngày (Mở Terminal tại thư mục Project)
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- PM/BA -->
+                    <div class="glass-panel p-5 rounded-xl border-t-2 border-t-purple-500">
+                        <h4 class="font-bold text-white mb-2">A. Tạo PRD từ Brief (BA/PM)</h4>
+                        <p class="text-xs text-gray-400 mb-3">Tạo file <code>docs/brief-feature.md</code> (1-2 trang mô tả thô), sau đó chạy lệnh:</p>
+                        <div class="code-block-wrapper mb-0">
+                            <div class="code-block-header"><span>Command</span><button onclick="copyCode('code-3')" class="copy-btn"><i class="fa-regular fa-copy"></i></button></div>
+                            <div class="code-block-content" id="code-3">/bmad-create-prd docs/brief-feature.md</div>
+                        </div>
                     </div>
 
-                    <!-- Phase 3 -->
-                    <div class="glass-panel p-6 rounded-xl border border-gray-700 text-center relative group hover:border-bmad-light transition-all">
-                        <div class="w-16 h-16 mx-auto bg-gray-800 border-2 border-bmad-DEFAULT rounded-full flex items-center justify-center text-xl font-bold mb-4">3</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Solutioning <br><span class="text-sm font-normal text-gray-400">(Giải pháp)</span></h4>
-                        <p class="text-sm text-gray-400">Agent <span class="text-bmad-light">Architect</span> quyết định công nghệ, cấu trúc thư mục và kiến trúc hệ thống tổng thể.</p>
+                    <!-- Architect -->
+                    <div class="glass-panel p-5 rounded-xl border-t-2 border-t-orange-500">
+                        <h4 class="font-bold text-white mb-2">B. Thiết kế Kiến trúc (Lead)</h4>
+                        <p class="text-xs text-gray-400 mb-3">Gọi Agent phân tích sâu và sinh mã LikeC4 as Code dựa trên PRD.</p>
+                        <div class="code-block-wrapper mb-0">
+                            <div class="code-block-header"><span>Command</span><button onclick="copyCode('code-4')" class="copy-btn"><i class="fa-regular fa-copy"></i></button></div>
+                            <div class="code-block-content" id="code-4">@bmm-architect
+Hãy đọc docs/prd.md và tạo architecture document.</div>
+                        </div>
                     </div>
 
-                    <!-- Phase 4 -->
-                    <div class="glass-panel p-6 rounded-xl border border-gray-700 text-center relative group hover:border-bmad-light transition-all">
-                        <div class="w-16 h-16 mx-auto bg-gray-800 border-2 border-bmad-DEFAULT rounded-full flex items-center justify-center text-xl font-bold mb-4">4</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Implementation <br><span class="text-sm font-normal text-gray-400">(Triển khai)</span></h4>
-                        <p class="text-sm text-gray-400">Các Agent <span class="text-bmad-light">Developer & Reviewer</span> viết code, tạo test, kiểm tra lỗi cho từng phần nhỏ.</p>
+                    <!-- Scrum Master -->
+                    <div class="glass-panel p-5 rounded-xl border-t-2 border-t-blue-500">
+                        <h4 class="font-bold text-white mb-2">C. Chia nhỏ Task (Lead/SM)</h4>
+                        <p class="text-xs text-gray-400 mb-3">Tạo các file <code>story-*.md</code> với Acceptance Criteria.</p>
+                        <div class="code-block-wrapper mb-0">
+                            <div class="code-block-header"><span>Command</span><button onclick="copyCode('code-5')" class="copy-btn"><i class="fa-regular fa-copy"></i></button></div>
+                            <div class="code-block-content" id="code-5">@bmm-sm
+Dựa trên prd.md và architecture.md, chia nhỏ thành các stories.</div>
+                        </div>
                     </div>
 
+                    <!-- Developer -->
+                    <div class="glass-panel p-5 rounded-xl border-t-2 border-t-green-500">
+                        <h4 class="font-bold text-white mb-2">D. Triển khai & Review (Dev)</h4>
+                        <p class="text-xs text-gray-400 mb-3">Dev Agent sẽ tự load skill Flutter/OMO. Sau đó chạy Review loop để fix bug.</p>
+                        <div class="code-block-wrapper mb-2">
+                            <div class="code-block-header"><span>1. Code Loop</span><button onclick="copyCode('code-6')" class="copy-btn"><i class="fa-regular fa-copy"></i></button></div>
+                            <div class="code-block-content" id="code-6">/vnpt-dev-story-loop docs/stories/story-001.md</div>
+                        </div>
+                        <div class="code-block-wrapper mb-0">
+                            <div class="code-block-header"><span>2. Review Loop</span><button onclick="copyCode('code-7')" class="copy-btn"><i class="fa-regular fa-copy"></i></button></div>
+                            <div class="code-block-content" id="code-7">/vnpt-review-loop</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Installation -->
-    <section id="install" class="py-20">
+    <!-- PHẦN 3: ĐÁNH GIÁ (RUBRIC FORM) -->
+    <section id="evaluation" class="py-16 bg-gray-900/50 border-t border-gray-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl relative overflow-hidden">
-                <!-- Decorative top bar -->
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600"></div>
-                
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div class="flex-1">
-                        <h2 class="text-3xl font-bold text-white mb-4">Cài đặt cực kỳ đơn giản</h2>
-                        <p class="text-gray-400 mb-6">
-                            Yêu cầu: Node.js 20+ và một công cụ AI (Claude Code, Cursor...). <br>
-                            Chỉ cần mở Terminal trong thư mục dự án của bạn và chạy lệnh sau để khởi tạo thư mục <code>_bmad</code>.
-                        </p>
-                        
-                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-4 flex items-center justify-between group">
-                            <code class="text-green-400 font-mono text-sm md:text-base" id="install-cmd">npx bmad-method install</code>
-                            <button onclick="copyCmd()" class="text-gray-500 hover:text-white transition-colors p-2" title="Sao chép">
-                                <i class="fa-regular fa-copy"></i>
-                            </button>
-                        </div>
-                        <p id="copy-msg" class="text-green-500 text-sm mt-2 opacity-0 transition-opacity">Đã sao chép vào clipboard!</p>
-                    </div>
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Phần 3: Form Báo Cáo & Đánh Giá</h2>
+                <p class="text-gray-400">Hoàn thành biểu mẫu này sau quá trình áp dụng. Dữ liệu sẽ được tổng hợp cho đợt Review Q2/2026.</p>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 rounded-2xl border border-gray-700 shadow-xl">
+                <!-- Form Area -->
+                <form id="bmadEvalForm" onsubmit="handleFormSubmit(event)">
                     
-                    <div class="flex-shrink-0 w-full md:w-1/3">
-                        <div class="bg-gray-800 rounded-lg p-4 text-xs font-mono text-gray-300 shadow-inner">
-                            <div class="flex gap-2 mb-3 border-b border-gray-700 pb-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <p class="text-blue-400">> npx bmad-method install</p>
-                            <p class="text-gray-400 mt-1">BMad Method Installer...</p>
-                            <p class="text-gray-400">? Chọn công cụ AI của bạn:</p>
-                            <p class="text-green-400">❯ Claude Code</p>
-                            <p class="text-gray-400">  Cursor</p>
-                            <p class="text-gray-400 mt-2">✔ Khởi tạo thành công!</p>
+                    <!-- Thông tin cá nhân -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Họ và tên *</label>
+                            <input type="text" id="fullName" required class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-vnpt-blue transition-colors" placeholder="Nguyễn Văn A">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Vai trò chính trong dự án *</label>
+                            <select id="role" required class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-vnpt-blue transition-colors">
+                                <option value="">-- Chọn vai trò --</option>
+                                <option value="Mobile Dev">Mobile Developer (Flutter)</option>
+                                <option value="Tech Lead">Tech Lead / Architect</option>
+                                <option value="BA/PM">BA / PM</option>
+                                <option value="QA/Tester">QA / Tester</option>
+                            </select>
                         </div>
                     </div>
-                </div>
+
+                    <!-- Checklist Phase 1 & 2 -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">Tiến độ áp dụng (Checklist)</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="flex items-start gap-3 text-gray-300 cursor-pointer">
+                                <input type="checkbox" id="chkInstall" class="mt-1">
+                                <span>Đã cài đặt thành công BMAD Bundle & OpenCode</span>
+                            </label>
+                            <label class="flex items-start gap-3 text-gray-300 cursor-pointer">
+                                <input type="checkbox" id="chkWorkflow" class="mt-1">
+                                <span>Đã thực hành full workflow trên ít nhất 1 Task thực tế</span>
+                            </label>
+                            <label class="flex items-start gap-3 text-gray-300 cursor-pointer">
+                                <input type="checkbox" id="chkDiary" class="mt-1">
+                                <span>Đã ghi chép Nhật ký áp dụng (Pain points, Action items)</span>
+                            </label>
+                            <label class="flex items-start gap-3 text-gray-300 cursor-pointer">
+                                <input type="checkbox" id="chkSkill" class="mt-1">
+                                <span>Có đề xuất điều chỉnh Skill files (.md) cho Flutter</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rubric Đánh Giá Cá Nhân -->
+                    <div class="mb-8 overflow-x-auto">
+                        <h3 class="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">Tự đánh giá Kỹ năng (Rubric)</h3>
+                        <table class="w-full rubric-table text-sm text-gray-300 min-w-[600px]">
+                            <thead>
+                                <tr class="bg-gray-800">
+                                    <th class="w-2/5">Kỹ năng / Hiểu biết</th>
+                                    <th>Chưa biết (0)</th>
+                                    <th>Biết lý thuyết (1)</th>
+                                    <th>Đã thực hành (2)</th>
+                                    <th>Thành thạo (3)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Skill 1 -->
+                                <tr>
+                                    <td>Hiểu luồng BMAD từ Brief đến Code</td>
+                                    <td><input type="radio" name="skill1" value="0" required></td>
+                                    <td><input type="radio" name="skill1" value="1"></td>
+                                    <td><input type="radio" name="skill1" value="2"></td>
+                                    <td><input type="radio" name="skill1" value="3"></td>
+                                </tr>
+                                <!-- Skill 2 -->
+                                <tr class="bg-gray-800/30">
+                                    <td>Viết Brief đúng chuẩn (đủ context)</td>
+                                    <td><input type="radio" name="skill2" value="0" required></td>
+                                    <td><input type="radio" name="skill2" value="1"></td>
+                                    <td><input type="radio" name="skill2" value="2"></td>
+                                    <td><input type="radio" name="skill2" value="3"></td>
+                                </tr>
+                                <!-- Skill 3 -->
+                                <tr>
+                                    <td>Dùng PM, Architect & SM Agents</td>
+                                    <td><input type="radio" name="skill3" value="0" required></td>
+                                    <td><input type="radio" name="skill3" value="1"></td>
+                                    <td><input type="radio" name="skill3" value="2"></td>
+                                    <td><input type="radio" name="skill3" value="3"></td>
+                                </tr>
+                                <!-- Skill 4 -->
+                                <tr class="bg-gray-800/30">
+                                    <td>Chạy <code>/vnpt-dev-story-loop</code> & Review loop</td>
+                                    <td><input type="radio" name="skill4" value="0" required></td>
+                                    <td><input type="radio" name="skill4" value="1"></td>
+                                    <td><input type="radio" name="skill4" value="2"></td>
+                                    <td><input type="radio" name="skill4" value="3"></td>
+                                </tr>
+                                <!-- Skill 5 -->
+                                <tr>
+                                    <td>Điều chỉnh cấu hình Agent/Skill file</td>
+                                    <td><input type="radio" name="skill5" value="0" required></td>
+                                    <td><input type="radio" name="skill5" value="1"></td>
+                                    <td><input type="radio" name="skill5" value="2"></td>
+                                    <td><input type="radio" name="skill5" value="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Phản hồi tự do -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Điểm mắc kẹt / Không như mong đợi trong thực tế dự án</label>
+                        <textarea id="painPoints" rows="3" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-vnpt-blue transition-colors" placeholder="VD: Review loop chạy hơi lâu, hay conflict với file abc..."></textarea>
+                    </div>
+
+                    <!-- Note & Submit -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="text-xs text-gray-500">
+                            <i class="fa-solid fa-lock mr-1"></i> Data sẽ được gửi đến <a href="https://docs.google.com/spreadsheets/d/1L7KTESnudXzkXe5jhbVeQHOWt1t7MbQ4qPRqzgaSK_s/edit" target="_blank" class="text-blue-400 hover:underline">Google Sheets Team (Chỉ nội bộ VNPT)</a>.
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full md:w-auto bg-vnpt-blue hover:bg-vnpt-light text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2">
+                            <span>Gửi Báo Cáo</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="successMsg" class="hidden mt-6 p-4 bg-green-900/30 border border-green-500/50 rounded-lg text-green-400 text-center">
+                        <i class="fa-solid fa-circle-check text-xl mb-2"></i><br>
+                        Gửi đánh giá thành công! Cảm ơn bạn đã đóng góp vào quy trình của team.
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 py-10 border-t border-gray-800 text-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-center gap-2 mb-4">
-                <i class="fa-solid fa-layer-group text-gray-500 text-2xl"></i>
-            </div>
-            <p class="text-gray-400 mb-6">Mã nguồn mở. Miễn phí 100%. Không có Paywall.</p>
-            
-            <div class="flex justify-center space-x-6">
-                <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" class="text-gray-500 hover:text-white transition-colors">
-                    <i class="fa-brands fa-github text-xl"></i> GitHub
-                </a>
-                <a href="https://docs.bmad-method.org/" target="_blank" class="text-gray-500 hover:text-white transition-colors">
-                    <i class="fa-solid fa-book text-xl"></i> Tài liệu (Docs)
-                </a>
-                <a href="https://www.youtube.com/@BMadCode" target="_blank" class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fa-brands fa-youtube text-xl"></i> YouTube
-                </a>
-            </div>
-            <p class="text-gray-600 text-sm mt-8">
-                Tạo ra để giúp bạn hiểu nhanh về kiến trúc BMAD.
-            </p>
+    <footer class="bg-black py-8 border-t border-gray-800 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-gray-500 text-sm">Tài liệu nội bộ: Trung Tâm SI - Mobile Team © Q2/2026</p>
+            <p class="text-gray-600 text-xs mt-2">Dựa trên framework BMAD v6.2.0 Custom Bundle.</p>
         </div>
     </footer>
 
     <script>
-        function copyCmd() {
-            const cmdText = document.getElementById('install-cmd').innerText;
-            navigator.clipboard.writeText(cmdText).then(() => {
-                const msg = document.getElementById('copy-msg');
-                msg.classList.remove('opacity-0');
+        // Copy to clipboard function
+        function copyCode(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`#${elementId}`).previousElementSibling.querySelector('button');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check text-green-400"></i> Copied';
                 setTimeout(() => {
-                    msg.classList.add('opacity-0');
+                    btn.innerHTML = originalHTML;
                 }, 2000);
             }).catch(err => {
-                // Fallback for older browsers
-                const textArea = document.createElement("textarea");
-                textArea.value = cmdText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    const msg = document.getElementById('copy-msg');
-                    msg.classList.remove('opacity-0');
-                    setTimeout(() => {
-                        msg.classList.add('opacity-0');
-                    }, 2000);
-                } catch (err) {
-                    console.error('Lỗi khi copy', err);
-                }
-                document.body.removeChild(textArea);
+                console.error('Lỗi khi copy', err);
             });
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+            
+            // UI Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+            submitBtn.classList.remove('bg-vnpt-blue');
+            submitBtn.classList.add('bg-gray-600');
+
+            // Collect Data (To send to Google Sheets later via App Script)
+            const formData = {
+                name: document.getElementById('fullName').value,
+                role: document.getElementById('role').value,
+                installed: document.getElementById('chkInstall').checked,
+                workflowDone: document.getElementById('chkWorkflow').checked,
+                diaryDone: document.getElementById('chkDiary').checked,
+                skillAdjusted: document.getElementById('chkSkill').checked,
+                skill1: document.querySelector('input[name="skill1"]:checked').value,
+                skill2: document.querySelector('input[name="skill2"]:checked').value,
+                skill3: document.querySelector('input[name="skill3"]:checked').value,
+                skill4: document.querySelector('input[name="skill4"]:checked').value,
+                skill5: document.querySelector('input[name="skill5"]:checked').value,
+                painPoints: document.getElementById('painPoints').value,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log("Data ready to be sent to Google Sheets:", formData);
+
+            /* * MÔ PHỎNG QUÁ TRÌNH GỬI API 
+             * Để kết nối thực tế với Google Sheets được cung cấp:
+             * 1. Vào Google Sheets -> Extensions -> Apps Script
+             * 2. Viết hàm doPost(e) để nhận JSON này và ghi vào bảng.
+             * 3. Deploy as Web App -> Lấy URL.
+             * 4. Thay URL đó vào hàm fetch() bên dưới.
+             */
+            
+            setTimeout(() => {
+                // Show Success
+                document.getElementById('successMsg').classList.remove('hidden');
+                document.getElementById('bmadEvalForm').reset();
+                
+                // Reset Button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.classList.add('bg-vnpt-blue');
+                submitBtn.classList.remove('bg-gray-600');
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMsg').classList.add('hidden');
+                }, 5000);
+            }, 1500); // Giả lập mạng chậm 1.5s
         }
     </script>
 </body>
